@@ -4,14 +4,14 @@ import { FaArrowRight } from 'react-icons/fa'
 import { TypeAnimation } from 'react-type-animation'
 const CodeBlocks = ({ position, heading, subheading, ctabtn1, ctabtn2, codeblock, backgroundGradie, codeColor }) => {
      return (
-          <div className={`flex ${position} max-md:flex-col max-lg:flex-col gap-28 my-12 max-md:gap-10`}>
-               <div className='w-[45%] flex flex-col justify-between max-md:w-full max-lg:w-full font-inter py-2'>
+          <div className={`flex ${position} max-md:flex-col max-lg:flex-col  gap-28 my-12 max-md:gap-10`}>
+               <div className='w-[45%] flex flex-col justify-between max-md:w-full max-lg:w-full font-inter py-2 max-md:gap-5'>
                     <div className='space-y-3'>
                          <p className='text-4xl font-semibold'>{heading}</p>
                          <p className='text-richblack-300'>{subheading}</p>
                     </div>
                     {/* btns */}
-                    <div className='flex gap-7'>
+                    <div className='flex max-md:flex-col gap-7'>
                          <CTAButton active={ctabtn1.active} linkto={ctabtn1.linkto}>
                               <div className='flex items-center gap-2'>
                                    <span>{ctabtn1.btnText}</span>

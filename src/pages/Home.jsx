@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { HighlightText } from "../components/core/HomePage/HighlightText";
@@ -6,6 +6,8 @@ import CTAButton from "../components/core/HomePage/Button";
 import Banner from "../assets/Images/banner.mp4";
 import CodeBlocks from "../components/core/HomePage/CodeBlocks"
 import TimelineSection from "../components/core/HomePage/TimelineSection";
+import LearningLangaugeSection from "../components/core/HomePage/LearningLangaugeSection";
+import InstructorSection from "../components/core/HomePage/InstructorSection";
 const Home = () => {
      return (
           <>
@@ -50,7 +52,7 @@ const Home = () => {
                               muted
                               loop
                               className="rounded-lg"
-
+                              onLoad={lazy}
                          >
                               <source src={Banner} type="video/mp4" />
                          </video>
@@ -84,19 +86,7 @@ const Home = () => {
                                         }
                                    }
                                    backgroundGradie={'codebox1'}
-                                   codeblock={`<!DOCTYPE html>
-                                        <html lang="en">
-                                             <head>
-                                                  <meta charset="UTF-8">
-                                                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                             <title>StudyNation</title>
-                                             <link rel="stylesheet" href="style.css">
-                                             </head>
-                                             <body>
-                                                  <h1>Welcome to StudyNation</h1>
-                                                  <p> With our online coding courses</p>
-                                             </body>
-                                             </html>`}
+                                   codeblock={`<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>StudyNation</title>\n<link rel="stylesheet" href="style.css">\n</head>\n<body>\n<h1>Welcome to StudyNation</h1>\n<p>With our online coding courses</p>\n</body>\n</html>`}
                                    codeColor={"text-yellow-50"}
                               />
                          </div>
@@ -128,14 +118,7 @@ const Home = () => {
                                         }
                                    }
                                    backgroundGradie={'codebox2'}
-                                   codeblock={`function isPelindrome(str) {
-                                             let s = str + "";
-                                             if (str.split("").reverse().join("") == s) {
-                                                  console.log("is Pelindrome : " + str);
-                                             } else {
-                                                  console.log("is Not Pelindrome : " + str);
-                                             }
-                                        }
+                                   codeblock={`function isPelindrome(str) {\nlet s = str + "";\nif (str.split("").reverse().join("") == s) {\nconsole.log("is Pelindrome : " + str);\n} else {\nconsole.log("is Not Pelindrome : " + str);\n}\n}
                                         isPelindrome("nurses");`}
                                    codeColor={"text-blue-25"}
                               />
@@ -148,7 +131,7 @@ const Home = () => {
                     <div className="homepage_bg h-[310px]" >
                          <div
                               className="w-11/12 h-full max-w-maxContent m-auto flex flex-col items-center justify-between">
-                              <div className="flex gap-7 m-auto text-white">
+                              <div className="flex max-md:flex-col gap-7 m-auto text-white">
                                    <CTAButton active={true} linkto={'/signup'} >
                                         <div className="flex items-center gap-2">
                                              Explore Full Catalog
@@ -162,16 +145,16 @@ const Home = () => {
                          </div>
                     </div>
 
-                    <div className="mx-auto flex flex-col w-11/12 max-w-maxContent items-center justify-between border border-black">
-                         <div className="w-11/12 max-w-maxContent flex flex-row max-md:flex-col max-lg:flex-col max-lg:w-full justify-between max-md:gap-5 max-lg:gap-5 mt-20 my-10">
+                    <div className="mx-auto flex flex-col w-11/12 max-w-maxContent items-center justify-between">
+                         <div className="w-11/12 max-w-maxContent flex flex-row justify-between max-md:flex-col max-lg:flex-col max-lg:w-full max-md:gap-5 max-lg:gap-5 my-10 gap-20">
                               <div className=" max-md:w-full max-lg:w-full">
                                    <h2 className="text-4xl font-bold">
                                         Get the skills you need for a <HighlightText text={'job that is in demand.'} />
                                    </h2>
                               </div>
-                              <div className="max-md:w-full space-y-4 max-lg:w-full">
+                              <div className="space-y-4 max-lg:w-full">
                                    <p>The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.</p>
-                                   <div className="w-[30%]">
+                                   <div className="w-[30%] max-md:w-full">
                                         <CTAButton active={true} linkto={'/signup'}>
                                              Learn More
                                         </CTAButton>
@@ -179,9 +162,19 @@ const Home = () => {
                               </div>
                          </div>
 
-                         <TimelineSection/>
+                         <TimelineSection />
+                         <LearningLangaugeSection />
                     </div>
+               </section>
+
+               {/* Section 3 */}
+               <section className="w-11/12 max-w-maxContent m-auto flex flex-col items-center justify-between bg-richblack-900 text-richblack-5 my-10">
                     
+                    <InstructorSection />
+                    
+                    <div>
+
+                    </div>
                </section>
           </>
      );
