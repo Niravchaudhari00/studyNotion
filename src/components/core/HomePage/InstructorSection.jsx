@@ -2,6 +2,7 @@ import React from 'react'
 import Instructor from "../../../assets/Images/Instructor.png"
 import { HighlightText } from './HighlightText'
 import CTAButton from "../HomePage/Button"
+import { FaArrowRight } from 'react-icons/fa'
 const InstructorSection = () => {
      return (
           <>
@@ -26,7 +27,10 @@ const InstructorSection = () => {
                          </p>
                          <div className='mt-16 max-md:mt-5'>
                               <CTAButton active={true} linkto={'/signup'}>
-                                   Start Teaching Today
+                                   <div className='flex justify-center items-center gap-3'>
+                                        Start Teaching Today
+                                        <FaArrowRight/>
+                                   </div>
                               </CTAButton>
                          </div>
                     </div>
