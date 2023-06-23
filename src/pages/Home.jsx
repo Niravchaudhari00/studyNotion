@@ -8,7 +8,7 @@ import CodeBlocks from "../components/core/HomePage/CodeBlocks"
 import TimelineSection from "../components/core/HomePage/TimelineSection";
 import LearningLangaugeSection from "../components/core/HomePage/LearningLangaugeSection";
 import InstructorSection from "../components/core/HomePage/InstructorSection";
-import Footer from "../components/core/Footer";
+// import Footer from "../components/comman/Footer"
 import ExploreMore from "../components/core/HomePage/ExploreMore";
 const Home = () => {
      return (
@@ -128,9 +128,9 @@ const Home = () => {
                     </div>
 
                     <div className="my-10 w-11/12 max-w-maxContent h-[300px] border border-yellow-5">
-                         <ExploreMore/>
+                         <ExploreMore />
                     </div>
-                         
+
                </section>
 
                {/* Section 2 */}
@@ -176,18 +176,18 @@ const Home = () => {
 
                {/* Section 3 */}
                <section className="w-11/12 max-w-maxContent m-auto flex flex-col items-center justify-between bg-richblack-900 text-richblack-5 my-10">
-                    
+
                     <InstructorSection />
-                    
+
                     <div className="my-10">
                          <h1 className="text-4xl font-semibold">Review <HighlightText text={' from other learners'} /> </h1>
                     </div>
                </section>
 
                {/* Footer */}
-               <footer>
-                    <Footer/>
-               </footer>
+               {/* <footer>
+                    <Footer />
+               </footer> */}
           </>
      );
 };
