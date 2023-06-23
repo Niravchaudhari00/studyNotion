@@ -8,6 +8,8 @@ import CodeBlocks from "../components/core/HomePage/CodeBlocks"
 import TimelineSection from "../components/core/HomePage/TimelineSection";
 import LearningLangaugeSection from "../components/core/HomePage/LearningLangaugeSection";
 import InstructorSection from "../components/core/HomePage/InstructorSection";
+import Footer from "../components/core/Footer";
+import ExploreMore from "../components/core/HomePage/ExploreMore";
 const Home = () => {
      return (
           <>
@@ -35,7 +37,7 @@ const Home = () => {
                               instructors.
                          </p>
                     </div>
-
+                    {/* CTA Button */}
                     <div className=" flex flex-row max-w-maxContentTab m-auto gap-7 justify-center">
                          <CTAButton active={true} linkto={"/signup"}>
                               Learn More
@@ -45,8 +47,8 @@ const Home = () => {
                               Book a Demo
                          </CTAButton>
                     </div>
-
-                    <div className="w-10/12 my-12 shadow-xl shadow-blue-100/50 drop-shadow-md rounded-lg">
+                    {/* Banner */}
+                    <div className="w-11/12 max-md:w-full my-12 shadow-xl shadow-blue-100/50 drop-shadow-md rounded-lg">
                          <video
                               autoPlay
                               muted
@@ -57,8 +59,8 @@ const Home = () => {
                               <source src={Banner} type="video/mp4" />
                          </video>
                     </div>
-
-                    <div className="w-11/12 my-5">
+                    {/* Code Block */}
+                    <div className="w-11/12 my-5 mb-20">
                          <div>
                               <CodeBlocks
                                    position={'lg:flex-row'}
@@ -124,6 +126,11 @@ const Home = () => {
                               />
                          </div>
                     </div>
+
+                    <div className="my-10 w-11/12 max-w-maxContent h-[300px] border border-yellow-5">
+                         <ExploreMore/>
+                    </div>
+                         
                </section>
 
                {/* Section 2 */}
@@ -172,10 +179,15 @@ const Home = () => {
                     
                     <InstructorSection />
                     
-                    <div>
-
+                    <div className="my-10">
+                         <h1 className="text-4xl font-semibold">Review <HighlightText text={' from other learners'} /> </h1>
                     </div>
                </section>
+
+               {/* Footer */}
+               <footer>
+                    <Footer/>
+               </footer>
           </>
      );
 };
