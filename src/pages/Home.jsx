@@ -8,11 +8,11 @@ import CodeBlocks from "../components/core/HomePage/CodeBlocks"
 import TimelineSection from "../components/core/HomePage/TimelineSection";
 import LearningLangaugeSection from "../components/core/HomePage/LearningLangaugeSection";
 import InstructorSection from "../components/core/HomePage/InstructorSection";
-// import Footer from "../components/comman/Footer"
 import ExploreMore from "../components/core/HomePage/ExploreMore";
+import Footer from "../components/comman/Footer"
 const Home = () => {
      return (
-          <>
+          <div>
                {/* Section 1  */}
                <section className="relative mx-auto flex flex-col w-11/12 max-w-maxContent items-center justify-between text-richblack-5">
 
@@ -127,7 +127,7 @@ const Home = () => {
                          </div>
                     </div>
 
-                    <div className="my-10 w-11/12 max-w-maxContent h-[300px] border border-yellow-5">
+                    <div className="w-11/12 max-w-maxContent">
                          <ExploreMore />
                     </div>
 
@@ -137,8 +137,8 @@ const Home = () => {
                <section className="bg-pure-greys-5 text-richblack-700 ">
                     <div className="homepage_bg h-[310px]" >
                          <div
-                              className="w-11/12 h-full max-w-maxContent m-auto flex flex-col items-center justify-between">
-                              <div className="flex max-md:flex-col gap-7 m-auto text-white">
+                              className="w-11/12 h-full max-w-maxContent m-auto flex flex-col items-center justify-between ">
+                              <div className="flex max-md:flex-col gap-7 m-auto text-white lg:mt-48">
                                    <CTAButton active={true} linkto={'/signup'} >
                                         <div className="flex items-center gap-2">
                                              Explore Full Catalog
@@ -159,9 +159,9 @@ const Home = () => {
                                         Get the skills you need for a <HighlightText text={'job that is in demand.'} />
                                    </h2>
                               </div>
-                              <div className="space-y-4 max-lg:w-full">
+                              <div className="space-y-4 lg:w-full">
                                    <p>The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.</p>
-                                   <div className="w-[30%] max-md:w-full">
+                                   <div className="w-[30%] lg:w-[40%]">
                                         <CTAButton active={true} linkto={'/signup'}>
                                              Learn More
                                         </CTAButton>
@@ -185,11 +185,11 @@ const Home = () => {
                </section>
 
                {/* Footer */}
-               {/* <footer>
+               <footer>
                     <Footer />
-               </footer> */}
-          </>
+               </footer>
+          </div>
      );
 };
 
-export default Home;
+export default Home
