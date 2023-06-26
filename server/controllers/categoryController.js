@@ -4,7 +4,7 @@ export const createCategory = async (req, res) => {
      try {
           // Fetch the data from req body
           const { name, description } = req.body;
-          
+
           // validation for all fiels are required
           if (!name) {
                res.status(401).json({
@@ -37,10 +37,7 @@ export const createCategory = async (req, res) => {
 // Fetch the All categories
 export const getAllCategory = async (req, res) => {
      try {
-          const getCategories = await Category.find(
-               {},
-               { name: true, description: true }
-          );
+          const getCategories = await Category.find({});
           // validation
           if (!getCategories) {
                return res.status(404).json({
@@ -60,7 +57,7 @@ export const getAllCategory = async (req, res) => {
           return res.status(500).json({
                success: false,
                message: `Error occurred while show the all categories. Please try again.`,
-               error:error.message
+               error: error.message
           });
      }
 };
@@ -124,3 +121,22 @@ export const categoryPageDetails = async (req, res) => {
           });
      }
 };
+
+// Category delete 
+
+export const deleteCategory = async (req, res) => {
+     try {
+          const { categoryId } = req.body;
+          await Category.findOneAndDelete({ _id: categoryId })
+
+          res.status(200).json({
+               success: true,
+               message: 'Category deleted successfully'
+          })
+     } catch (error) {
+          res.status(500).json({
+               success: false,
+               message: error.message
+          })
+     }
+}

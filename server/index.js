@@ -4,6 +4,7 @@ import fileUpload from "express-fileupload";
 import mongodbConnect from "../server/config/database.js";
 import { connectCloudinary } from "../server/config/cloudinary.js";
 import cookieParser from "cookie-parser";
+import cors from 'cors'
 
 // Import Routes
 import authRouter from "../server/routes/authRouter.js";
@@ -22,6 +23,12 @@ app.use(
      })
 );
 
+app.use(
+     cors({
+          origin: "*"
+     })
+)
+
 app.use(cookieParser())
 
 // get routes for testing
@@ -36,11 +43,11 @@ app.use("/api/v1/course", courseRouter)
 // Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-     console.log(`server is running at ${PORT}`);
+     console.log(`server is running at http://localhost:${PORT}`);
 });
 
 // Database
 mongodbConnect();
 
-// Cloudinary
+// Cloudinary  asf
 connectCloudinary();

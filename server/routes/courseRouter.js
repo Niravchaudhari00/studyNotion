@@ -1,6 +1,7 @@
 import {
      categoryPageDetails,
      createCategory,
+     deleteCategory,
      getAllCategory,
 } from "../controllers/categoryController.js";
 import { Router } from "express";
@@ -53,6 +54,7 @@ router.post("/deleteSubSection", Auth, isInstructor, deleteSubSection);
 
 // create a category
 router.post("/create-category", Auth, isAdmin, createCategory);
+router.delete("/deleteCategory" ,Auth,isAdmin,deleteCategory)
 // show the all categories
 router.get("/getAllCategory", getAllCategory);
 router.post("/getCategoryPageDetails", categoryPageDetails);

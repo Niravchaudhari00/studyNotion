@@ -103,10 +103,9 @@ export const createCourse = async (req, res) => {
                { new: true }
           );
 
-          // HW : Done
           // add the new couser in the category schema
           await Category.findByIdAndUpdate(
-               { _id: isInstructor._id },
+               { _id: category },
                { $push: { courses: saveCourse._id } },
                { new: true }
           );

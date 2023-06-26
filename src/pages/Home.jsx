@@ -9,21 +9,23 @@ import TimelineSection from "../components/core/HomePage/TimelineSection";
 import LearningLangaugeSection from "../components/core/HomePage/LearningLangaugeSection";
 import InstructorSection from "../components/core/HomePage/InstructorSection";
 import ExploreMore from "../components/core/HomePage/ExploreMore";
-import Footer from "../components/comman/Footer"
+import Footer from "../components/common/Footer"
 const Home = () => {
      return (
           <div>
                {/* Section 1  */}
                <section className="relative mx-auto flex flex-col w-11/12 max-w-maxContent items-center justify-between text-richblack-5">
 
-                    <Link to={"/signup"}>
-                         <div className="group mx-auto mt-16 p-1 rounded-full bg-richblack-800 font-bold text-richblack-200 hover:scale-95 w-fit transition-all duration-200 shadow-sm shadow-blue-50/100">
-                              <div className="flex gap-2 items-center px-5 py-[5px] rounded-full transition-all duration-200 group-hover:bg-richblack-900">
-                                   <p className="">Become an Instructor</p>
-                                   <FaArrowRight />
+                    <div>
+                         <Link to={"/signup"}>
+                              <div className="group mx-auto mt-16 p-1 rounded-full bg-richblack-800 font-bold text-richblack-200 hover:scale-95 w-fit transition-all duration-200 shadow-sm shadow-blue-50/100">
+                                   <div className="flex gap-2 items-center px-5 py-[5px] rounded-full transition-all duration-200 group-hover:bg-richblack-900">
+                                        <p className="">Become an Instructor</p>
+                                        <FaArrowRight />
+                                   </div>
                               </div>
-                         </div>
-                    </Link>
+                         </Link>
+                    </div>
 
                     <div className="max-md:text-left  font-semibold text-center text-4xl mt-5">
                          Empower Your Future with <HighlightText text={"Coding Skills"} />
@@ -65,9 +67,9 @@ const Home = () => {
                               <CodeBlocks
                                    position={'lg:flex-row'}
                                    heading={
-                                        <div>
+                                        <span>
                                              Unlock your <HighlightText text={`coding potential`} /> with our online courses
-                                        </div>
+                                        </span>
                                    }
 
                                    subheading={`Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you.`}
@@ -96,10 +98,10 @@ const Home = () => {
                               <CodeBlocks
                                    position={'lg:flex-row-reverse'}
                                    heading={
-                                        <div>
+                                        <span>
                                              Start <HighlightText text={`coding
                                    in seconds`} />
-                                        </div>
+                                        </span>
                                    }
 
                                    subheading={`Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson.`}
@@ -138,9 +140,9 @@ const Home = () => {
                     <div className="homepage_bg h-[310px]" >
                          <div
                               className="w-11/12 h-full max-w-maxContent m-auto flex flex-col items-center justify-between ">
-                              <div className="flex max-md:flex-col gap-7 m-auto text-white lg:mt-48">
+                              <div className="flex max-md:gap-2 gap-7 m-auto text-white lg:mt-48 max-md:mt-[170px]">
                                    <CTAButton active={true} linkto={'/signup'} >
-                                        <div className="flex items-center gap-2">
+                                        <div className="flex w-fit items-center gap-2">
                                              Explore Full Catalog
                                              <FaArrowRight />
                                         </div>
@@ -161,7 +163,7 @@ const Home = () => {
                               </div>
                               <div className="space-y-4 lg:w-full">
                                    <p>The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.</p>
-                                   <div className="w-[30%] lg:w-[40%]">
+                                   <div className="w-fit">
                                         <CTAButton active={true} linkto={'/signup'}>
                                              Learn More
                                         </CTAButton>
