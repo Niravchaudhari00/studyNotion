@@ -1,10 +1,10 @@
-
 import mailSend from "../utils/mailSend.js";
 import User from "../models/User.js";
 import crypt from "crypto";
-import bcrypt from "bcryptjs"
+import bcrypt from "bcryptjs";
 import { resetPasswordTemplate } from "../mail/template/resetPassword.js";
-
+import { config } from "dotenv";
+config();
 export const resetPasswordToken = async (req, res) => {
      try {
           // Fetch the username
@@ -17,7 +17,7 @@ export const resetPasswordToken = async (req, res) => {
                });
           }
           // Generate token using crypt using url
-          const token = crypt.randomBytes(20).toString('hex');
+          const token = crypt.randomBytes(20).toString("hex");
           console.log(token);
           const updateDetails = await User.findOneAndUpdate(
                { email: email },
@@ -27,7 +27,7 @@ export const resetPasswordToken = async (req, res) => {
                },
                { new: true }
           );
-          const url = `https://localhost:4000/update-password/${token}`;
+          const url = process.env.URL_RESET_PASSWORD_TOKEN + `/${token}`;
           await mailSend(
                email,
                `Password Reset of studyNation`,
@@ -37,7 +37,7 @@ export const resetPasswordToken = async (req, res) => {
           return res.status(200).json({
                success: true,
                message: `Email sent successfully. Please check your email and reset password.`,
-               updateDetails
+               updateDetails,
           });
      } catch (error) {
           return res.status(500).json({
@@ -50,7 +50,6 @@ export const resetPasswordToken = async (req, res) => {
 // Reset password
 export const resetPassword = async (req, res) => {
      try {
-          
           // Fetch the data from body
           const { password, confirmPassword, token } = req.body;
 
@@ -70,15 +69,14 @@ export const resetPassword = async (req, res) => {
                });
           }
 
-          // Find user 
-          const userDetails = await User.findOne({ token: token })
+          // Find user
+          const userDetails = await User.findOne({ token: token });
           if (!userDetails) {
                return res.json({
                     success: false,
                     message: "invalid token",
                });
           }
-
 
           // Token expire
 
@@ -90,7 +88,7 @@ export const resetPassword = async (req, res) => {
           }
 
           // encyrpt password
-          const encryptPassword = await bcrypt.hash(password, 10)
+          const encryptPassword = await bcrypt.hash(password, 10);
           console.log(encryptPassword);
           // update password
           await User.findOneAndUpdate(
@@ -102,13 +100,13 @@ export const resetPassword = async (req, res) => {
           // return response
           return res.status(200).json({
                success: true,
-               message: `password reset successfully`
-          })
+               message: `password reset successfully`,
+          });
      } catch (error) {
           console.log(error.message);
           return res.status(500).json({
                success: false,
-               message: `Error occurred while reste the password. Please try again`
-          })
+               message: `Error occurred while reste the password. Please try again`,
+          });
      }
 };

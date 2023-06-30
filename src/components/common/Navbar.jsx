@@ -24,7 +24,10 @@ const Navbar = () => {
           (async () => {
                setLoading(true);
                try {
-                    const result = await apiConnector("GET", categories.CATAGORIES_API);
+                    const result = await apiConnector(
+                         "GET",
+                         categories.CATAGORIES_API
+                    );
                     setSubLink(result.data.data);
                } catch (error) {
                     console.log(error);
@@ -33,7 +36,7 @@ const Navbar = () => {
           })();
      }, []);
 
-     console.log('result => ', subLinks?.filter((sub) => sub?.courses?.length));
+     // console.log('result => ', subLinks?.filter((sub) => sub?.courses?.length));
 
      const matchRoutes = (routes) => {
           return matchPath({ path: routes }, location.pathname);
@@ -63,10 +66,13 @@ const Navbar = () => {
                                              {links.title === "Catalog" ? (
                                                   <>
                                                        <div
-                                                            className={`group relative flex cursor-pointer items-center gap-1 ${matchRoutes("/catalog/:catalogName")
-                                                                 ? "text-yellow-25"
-                                                                 : "text-richblack-25"
-                                                                 }`}
+                                                            className={`group relative flex cursor-pointer items-center gap-1 ${
+                                                                 matchRoutes(
+                                                                      "/catalog/:catalogName"
+                                                                 )
+                                                                      ? "text-yellow-25"
+                                                                      : "text-richblack-25"
+                                                            }`}
                                                        >
                                                             <p>{links.title}</p>
                                                             <BsChevronDown />
@@ -91,25 +97,54 @@ const Navbar = () => {
                                                                                      fill="currentFill"
                                                                                 />
                                                                            </svg>
-                                                                           <span className="sr-only">Loading...</span>
+                                                                           <span className="sr-only">
+                                                                                Loading...
+                                                                           </span>
                                                                       </div>
                                                                  ) : subLinks?.length ? (
                                                                       <>
-                                                                           {subLinks?.filter(
-                                                                                (sublink) => sublink?.courses?.length > 0
-                                                                           ).map((sublink, index) => (
-                                                                                <Link
-                                                                                     to={`catalog/${sublink.name.split(" ").join("-").toLowerCase()}`}
-                                                                                     key={index}
-                                                                                     className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
-                                                                                >
-                                                                                     {sublink.name}
-                                                                                </Link>
-                                                                           ))
-                                                                           }
+                                                                           {subLinks
+                                                                                ?.filter(
+                                                                                     (
+                                                                                          sublink
+                                                                                     ) =>
+                                                                                          sublink
+                                                                                               ?.courses
+                                                                                               ?.length >
+                                                                                          0
+                                                                                )
+                                                                                .map(
+                                                                                     (
+                                                                                          sublink,
+                                                                                          index
+                                                                                     ) => (
+                                                                                          <Link
+                                                                                               to={`catalog/${sublink.name
+                                                                                                    .split(
+                                                                                                         " "
+                                                                                                    )
+                                                                                                    .join(
+                                                                                                         "-"
+                                                                                                    )
+                                                                                                    .toLowerCase()}`}
+                                                                                               key={
+                                                                                                    index
+                                                                                               }
+                                                                                               className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
+                                                                                          >
+                                                                                               {
+                                                                                                    sublink.name
+                                                                                               }
+                                                                                          </Link>
+                                                                                     )
+                                                                                )}
                                                                       </>
                                                                  ) : (
-                                                                      <p>No Course Found</p>
+                                                                      <p>
+                                                                           No
+                                                                           Course
+                                                                           Found
+                                                                      </p>
                                                                  )}
                                                             </div>
                                                        </div>
@@ -117,10 +152,13 @@ const Navbar = () => {
                                              ) : (
                                                   <Link to={links?.path}>
                                                        <span
-                                                            className={`${matchRoutes(links.path)
-                                                                 ? "text-yellow-50"
-                                                                 : "text-richblack-25"
-                                                                 }`}
+                                                            className={`${
+                                                                 matchRoutes(
+                                                                      links.path
+                                                                 )
+                                                                      ? "text-yellow-50"
+                                                                      : "text-richblack-25"
+                                                            }`}
                                                        >
                                                             {links.title}
                                                        </span>
@@ -134,16 +172,6 @@ const Navbar = () => {
 
                     {/* profile section Login/Signup/Cart/Profile/Dashboard */}
                     <div className="hidden lg:flex gap-7">
-                         {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
-                              <Link to={"/dashboard/cart"} className="relative">
-                                   <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
-                                   {totalItem > 0 && (
-                                        <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
-                                             {totalItem}
-                                        </span>
-                                   )}
-                              </Link>
-                         )}
                          {/* login */}
                          {token === null && (
                               <Link to={"/login"}>
@@ -160,10 +188,25 @@ const Navbar = () => {
                                    </button>
                               </Link>
                          )}
+                         <div className="flex felx-row justify-center items-center gap-5">
+                              {user &&
+                                   user?.accountType !==
+                                        ACCOUNT_TYPE.INSTRUCTOR && (
+                                        <Link
+                                             to={"/dashboard/cart"}
+                                             className="relative"
+                                        >
+                                             <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
+                                             {totalItem > 0 && (
+                                                  <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
+                                                       {totalItem}
+                                                  </span>
+                                             )}
+                                        </Link>
+                                   )}
+                              {token !== null && <ProfileDropDown />}
+                         </div>
                     </div>
-                    {
-                         token !== null && <ProfileDropDown/>
-                    }
                     <button className="mr-4 md:hidden">
                          <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
                     </button>
