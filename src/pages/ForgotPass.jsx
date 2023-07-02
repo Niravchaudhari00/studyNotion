@@ -71,7 +71,7 @@ const ForgotPass = () => {
                          <div className="mt-6 flex items-center justify-between">
                               <Link to="/login">
                                    <p className="text-richblack-5 flex items-center gap-x-2">
-                                        <BiArrowBack /> Back To Signup
+                                        <BiArrowBack /> Back To Login
                                    </p>
                               </Link>
                          </div>

@@ -10,6 +10,7 @@ import cors from 'cors'
 import authRouter from "../server/routes/authRouter.js";
 import profileRouter from "../server/routes/profileRouter.js"
 import courseRouter from "../server/routes/courseRouter.js"
+import contactUs from "../server/routes/contactRouter.js"
 config();
 
 const app = express();
@@ -39,6 +40,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/profile", profileRouter);
 app.use("/api/v1/course", courseRouter)
+app.use('/api/v1/', contactUs)
 // payment route panding
 // Server
 const PORT = process.env.PORT || 5000;

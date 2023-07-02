@@ -10,6 +10,7 @@ import LearningLangaugeSection from "../components/core/HomePage/LearningLangaug
 import InstructorSection from "../components/core/HomePage/InstructorSection";
 import ExploreMore from "../components/core/HomePage/ExploreMore";
 import Footer from "../components/common/Footer"
+import ReviewAndRating from "../components/common/ReviewAndRating";
 const Home = () => {
      return (
           <div>
@@ -181,9 +182,7 @@ const Home = () => {
 
                     <InstructorSection />
 
-                    <div className="my-10">
-                         <h1 className="text-4xl font-semibold">Review <HighlightText text={' from other learners'} /> </h1>
-                    </div>
+                    <ReviewAndRating/>
                </section>
 
                {/* Footer */}

@@ -3,7 +3,7 @@ import transporter from "../config/transporter.js";
 const mailSender = async (email, title, body) => {
      try {
           let info = await transporter.sendMail({
-               from: "nir7308gmail.com",
+               from: "info@studynotion.com",
                to: `${email}`,
                subject: `${title}`,
                html: `${body}`

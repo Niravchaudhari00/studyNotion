@@ -14,3 +14,8 @@ export const endPoint = {
 export const categories = {
      CATAGORIES_API: BASE_URL + `/course/getAllCategory`
 }
+
+// CONTACT US 
+export const contactUs = {
+     CONTACTUS_API : BASE_URL + `/contactUs`
+}
