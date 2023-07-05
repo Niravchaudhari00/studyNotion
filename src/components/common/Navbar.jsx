@@ -6,7 +6,7 @@ import { apiConnector } from "../../service/apiConnector";
 import { categories } from "../../service/apis";
 import { BsChevronDown } from "react-icons/bs";
 import { useSelector } from "react-redux";
-import { ACCOUNT_TYPE } from "../../utils/constans";
+import { ACCOUNT_TYPE } from "../../utils/constants";
 
 import { AiOutlineShoppingCart, AiOutlineMenu } from "react-icons/ai";
 import ProfileDropDown from "../core/Auth/ProfileDropDown";

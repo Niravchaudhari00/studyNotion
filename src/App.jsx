@@ -11,13 +11,23 @@ import ForgotPass from "./pages/ForgotPass";
 import ResetNewPassword from "./pages/ResetNewPassword";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import PrivateRoute from "./components/core/Auth/PrivateRoute";
+import Error from "./pages/Error";
+import Dashboard from "./pages/Dashboard";
+import MyProfile from "./components/core/Dashboard/MyProfile";
+import Settings from "./components/core/Dashboard/Settings";
+import { useSelector } from "react-redux";
+
+
 function App() {
+     const { user } = useSelector((state) => state.profile)
      return (
           <div className="w-screen min-h-screen bg-richblack-900 flex-col font-inter">
                {/* Navbar */}
                <Navbar />
 
                {/* Routes */}
+               {/* Open routes */}
                <Routes>
                     <Route path="/" element={<Home />} />
 
@@ -68,6 +78,24 @@ function App() {
 
                     <Route path="about" element={<About />} />
                     <Route path="contact" element={<Contact />} />
+
+                    {/* Dashboard protected routes */}
+                    <Route
+                         // path="dashboard"
+                         element={
+                              <PrivateRoute>
+                                   <Dashboard />
+                              </PrivateRoute>
+                         }
+                    >
+                         {/* child route */}
+                         <Route path={"dashboard/my-profile"} element={<MyProfile />} />
+                         <Route path={"dashboard/settings"} element={<Settings />} />
+
+                    </Route>
+
+                    {/* Erorr page */}
+                    <Route path="*" element={<Error />}></Route>
                </Routes>
           </div>
      );

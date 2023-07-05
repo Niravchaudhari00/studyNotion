@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Tab from "../../common/Tab";
-import { ACCOUNT_TYPE } from "../../../utils/constans";
+import { ACCOUNT_TYPE } from "../../../utils/constants";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
