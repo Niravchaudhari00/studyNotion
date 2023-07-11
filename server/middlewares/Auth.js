@@ -3,11 +3,14 @@ import { config } from "dotenv";
 config();
 
 export const Auth = async (req, res, next) => {
-
+     // console.log("Before code start");
      const token =
           req.cookies.token ||
           req.body.token ||
-          req.header("Authorisation")?.replace("Bearer ", "");
+          req.header("Authorization")?.replace("Bearer ", "");
+
+     // console.log("Bearer token", token);
+     // console.log("After code end");
      try {
           // token is available or not
           if (!token) {
@@ -19,7 +22,7 @@ export const Auth = async (req, res, next) => {
 
           try {
                const decode = await jwt.verify(token, process.env.JWT_TOKEN_SECRET);
-               console.log("decode token -> :", decode);
+               // console.log("decode token -> :", decode);
                req.user = decode;
           } catch (error) {
                return res.status(401).json({

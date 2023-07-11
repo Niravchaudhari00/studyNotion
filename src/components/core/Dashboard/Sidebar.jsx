@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { sidebarLinks } from "../../../data/dashboard-links";
 import { useDispatch, useSelector } from "react-redux";
-import NavbarLinks from "./SidebarLinks";
+import SidebarLinks from "./SidebarLinks";
 import { VscSignOut } from "react-icons/vsc";
 import { logout } from "../../../service/operations/AuthApi";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ const Sidebar = () => {
                                    return null;
                               } else {
                                    return (
-                                        <NavbarLinks
+                                        <SidebarLinks
                                              key={link.id}
                                              link={link}
                                              iconName={link.icon}
@@ -31,7 +31,7 @@ const Sidebar = () => {
                     </div>
                     <div className="w-10/12 h-[1px] bg-richblack-700 mx-auto my-5"></div>
                     <div className="flex flex-col">
-                         <NavbarLinks
+                         <SidebarLinks
                               link={{
                                    name: "Settings",
                                    path: "/dashboard/settings",

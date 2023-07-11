@@ -13,6 +13,7 @@ import { passwordUpdate } from "../mail/template/passwordUpdate.js";
 // Register user
 export const signUp = async (req, res) => {
      try {
+          // Nirav
           // Fetch the data from req body
           const {
                firstName,
@@ -84,7 +85,7 @@ export const signUp = async (req, res) => {
 
           // Create the Profile for Additional Details
           const profileDetails = await Profile.create({
-               geneder: null,
+               gender: null,
                dateOfBirth: null,
                about: null,
                contactNumber: null,
@@ -134,7 +135,7 @@ export const logIn = async (req, res) => {
           }
 
           // Find the user
-          const user = await User.findOne({ email });
+          const user = await User.findOne({ email }).populate("additionalDetails").exec();
           if (!user) {
                return res.status(401).json({
                     success: false,
@@ -165,7 +166,7 @@ export const logIn = async (req, res) => {
                     httpOnly: true,
                };
 
-               res.status(200).cookie("token", token, options).json({
+               res.cookie("token", token, options).status(200).json({
                     success: true,
                     message: "Logged In Successfully.",
                     user,

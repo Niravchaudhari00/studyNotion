@@ -66,6 +66,7 @@ export const signUp = (
                console.log("Sing up response => ", response);
 
                if (!response.data.success) {
+                    // toast.error(response.data)
                     throw new Error(response.data.message);
                }
                toast.success("Signup Successfull");
@@ -93,7 +94,7 @@ export const login = (email, password, navigate) => {
                console.log(`API RESPONSE =>`, response.data.user);
 
                if (!response.data.success) {
-                    throw new Error(response.data.message);
+                    throw new Error(toast.error(response.data.message));
                }
 
                toast.success("Login success");
@@ -113,8 +114,7 @@ export const login = (email, password, navigate) => {
 
                navigate("/dashboard/my-profile");
           } catch (error) {
-               toast.error("Login failed,");
-               console.log(error.message);
+               toast.error(error.response.data.message);
           }
           dispatch(setLoading(false));
           toast.dismiss(toastId);

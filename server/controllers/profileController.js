@@ -1,53 +1,49 @@
 import User from "../models/User.js";
 import Profile from "../models/Profile.js";
-import fileUploadOnCloudinary, { isFileTypeSupported } from "../utils/fileUploadOnCloudinary.js";
+import fileUploadOnCloudinary, {
+     isFileTypeSupported,
+} from "../utils/fileUploadOnCloudinary.js";
 
 // update profile
 export const updateProfile = async (req, res) => {
      try {
-
           // fetch the data
           const {
+               firstName = "",
+               lastName = "",
+               gender = "",
                dateOfBirth = "",
                about = "",
-               gender = "",
-               contectNumber,
+               contactNumber,
           } = req.body;
 
-          // Validation of mobile number
-          if (contectNumber.length > 10) {
-               return res.status(400).json({
-                    message:`Please enter the less than ${contectNumber.length}`
-               })
-          } else if (contectNumber.length < 10) {
-               return res.status(400).json({
-                    message: `Please enter the greater than ${contectNumber.length}`
-               })
-          }
           const userId = req.user.id;
+
           // Find the profile by id
-          const userDetails = await User.findById({ _id: userId });
-          console.log(userDetails);
-          const profile = await Profile.findById({
-               _id: userDetails.additionalDetails,
+          const userDetails = await User.findByIdAndUpdate(userId, {
+               firstName,
+               lastName,
           });
 
-          // Update profile
-          profile.dateOfBirth = dateOfBirth;
-          profile.gender = gender;
-          profile.about = about;
-          profile.contactNumber = contectNumber;
-
-          // Update save
-          await profile.save();
+          await Profile.findByIdAndUpdate(
+               userDetails.additionalDetails,
+               {
+                    gender,
+                    dateOfBirth,
+                    contactNumber,
+                    about,
+               });
+          
+          const updateUserDetails = await User.findById(userId)
+               .populate("additionalDetails")
+               .exec();
 
           // return resposn
           return res.status(200).json({
                success: true,
                message: `Profile update successfully`,
-               data: profile,
+               updateUserDetails,
           });
-
      } catch (error) {
           return res.status(500).json({
                success: false,
@@ -63,7 +59,7 @@ export const getUserDetails = async (req, res) => {
           // Get the user id
           const id = req.user.id;
 
-          const allUserDetails = await User.findById(id)
+          const allUserDetails = await User.findById({ _id: id })
                .populate("additionalDetails")
                .exec();
           // Chech the user is available or not
@@ -127,17 +123,18 @@ export const updateDisplayPicture = async (req, res) => {
      try {
           // Fetch the image file
           const displayPicture = req.files.dpFile;
+          // console.log("desplay picture >",displayPicture);
           // console.log(displayPicture.name.split('.')[1]);
           const userId = req.user.id;
           // check file types
           const supportFileType = ["jpg", "jpeg", "png"];
-          const fileType = displayPicture.name.split('.')[1].toLowerCase();
+          const fileType = displayPicture.name.split(".")[1].toLowerCase();
           console.log(fileType);
           if (!isFileTypeSupported(supportFileType, fileType)) {
                return res.status(400).json({
                     success: false,
-                    message: `This file type not supported. Please select the jpg,jpeg and png file are supported`
-               })
+                    message: `This file type not supported. Please select the jpg,jpeg and png file are supported`,
+               });
           }
 
           const image = await fileUploadOnCloudinary(

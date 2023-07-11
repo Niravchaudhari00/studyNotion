@@ -15,7 +15,7 @@ import PrivateRoute from "./components/core/Auth/PrivateRoute";
 import Error from "./pages/Error";
 import Dashboard from "./pages/Dashboard";
 import MyProfile from "./components/core/Dashboard/MyProfile";
-import Settings from "./components/core/Dashboard/Settings";
+import Settings from "./components/core/Dashboard/Settings/Settings";
 import { useSelector } from "react-redux";
 
 

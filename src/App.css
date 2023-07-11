@@ -45,4 +45,6 @@ body {
           transform: rotate(1turn);
      }
 }
-
+.lable-style {
+     @apply text-[14px] text-richblack-5;
+}
