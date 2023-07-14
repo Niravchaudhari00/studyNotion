@@ -1,6 +1,7 @@
 import React from 'react'
 import UpdateProfilePic from './UpdateProfilePic'
 import UpdateAdditionalDetails from './UpdateAdditionalDetails'
+import DeleteAccount from './DeleteAccount'
 
 const Settings = () => {
      return (
@@ -9,7 +10,9 @@ const Settings = () => {
                {/* update profile picture */}
                <UpdateProfilePic />
                {/* update additional details */}
-               <UpdateAdditionalDetails/>
+               <UpdateAdditionalDetails />
+               {/* Deleting Account */}
+               <DeleteAccount />
           </>
      )
 }

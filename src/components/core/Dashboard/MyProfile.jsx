@@ -7,7 +7,7 @@ import { formattedDate } from "../../../utils/dateFormate";
 const MyProfile = () => {
      const { user } = useSelector((state) => state.profile);
      const navigate = useNavigate();
-     console.log("user is here =>", user);
+     
      return (
           <>
                <h1 className="mb-14 text-3xl font-medium text-richblack-5">

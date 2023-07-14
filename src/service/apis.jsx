@@ -25,5 +25,6 @@ export const SettingEndPoint = {
      UPDATE_PROFILE_PICTURE: `${BASE_URL}/profile/update-profile-picture`,
      UPDATE_YOUR_PROFILE: `${BASE_URL}/profile/update-profile`,
      DELETE_ACCOUNT: `${BASE_URL}/profile/deleteAccount`,
+     CHANGE_PASSWORD: `${BASE_URL}/auth/change-password`,
      
 }

@@ -5,12 +5,15 @@ import IconBtn from "../../../common/IconBtn";
 import { useNavigate } from "react-router-dom";
 import { updateYourProfile } from "../../../../service/operations/SettingsApi";
 
-const genders = ["Male", "Female", "Other"];
+const genders = ["Male", "Female", "Non-Binary", "Prefer not to say", "Other"]
 const UpdateAdditionalDetails = () => {
+     
      const navigate = useNavigate();
      const dispatch = useDispatch();
+     
      const { user } = useSelector((state) => state.profile);
      const { token } = useSelector((state) => state.auth);
+
      const {
           register,
           handleSubmit,
